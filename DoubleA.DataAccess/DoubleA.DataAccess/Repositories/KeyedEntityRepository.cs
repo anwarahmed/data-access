@@ -5,8 +5,8 @@ using System.Linq.Expressions;
 using System.Threading.Tasks;
 using DoubleA.DataAccess.Contract.Repositories;
 using DoubleA.DataAccess.DataContexts;
-using DoubleA.DataAccess.Extensions;
 using DoubleA.EntityModel.Entities;
+using DoubleA.LinqExtensions;
 using Microsoft.EntityFrameworkCore;
 
 namespace DoubleA.DataAccess.Repositories
@@ -20,28 +20,28 @@ namespace DoubleA.DataAccess.Repositories
 
         protected IDataContext Context { get; }
 
-        protected DbSet<TEntity> EntitySet => Context.Set<TEntity>();
+        protected IQueryable<TEntity> TrackedEntities => Context.Tracked<TEntity>();
 
-        protected IQueryable<TEntity> EntityQuery => Context.Query<TEntity>();
+        protected IQueryable<TEntity> UntrackedEntities => Context.Untracked<TEntity>();
 
         public virtual async Task<TEntity> GetAsync(Guid id)
         {
-            return await EntityQuery.FirstOrDefaultAsync(e => e.Id == id).ConfigureAwait(false);
+            return await UntrackedEntities.FirstOrDefaultAsync(e => e.Id == id).ConfigureAwait(false);
         }
 
         public virtual async Task<IDictionary<Guid, TEntity>> GetAsync(ISet<Guid> ids)
         {
-            return await EntityQuery.Where(e => ids.Contains(e.Id)).ToDictionaryAsync(e => e.Id).ConfigureAwait(false);
+            return await UntrackedEntities.Where(e => ids.Contains(e.Id)).ToDictionaryAsync(e => e.Id).ConfigureAwait(false);
         }
 
         public virtual async Task<IDictionary<Guid, TEntity>> GetAsync()
         {
-            return await EntityQuery.ToDictionaryAsync(e => e.Id).ConfigureAwait(false);
+            return await UntrackedEntities.ToDictionaryAsync(e => e.Id).ConfigureAwait(false);
         }
 
         public virtual async Task<IDictionary<Guid, TEntity>> GetAsync(params Expression<Func<TEntity, bool>>[] filters)
         {
-            return await EntityQuery.Filter(filters).ToDictionaryAsync(e => e.Id).ConfigureAwait(false);
+            return await UntrackedEntities.Filter(filters).ToDictionaryAsync(e => e.Id).ConfigureAwait(false);
         }
 
         public abstract Task CreateAsync(TEntity newEntity);
