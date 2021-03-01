@@ -3,27 +3,28 @@
     <PropertyGroup>
         <PackageId>DoubleA.DataAccess</PackageId>
         <Title>DoubleA.DataAccess</Title>
-        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <TargetFramework>net5.0</TargetFramework>
         <Owners>Anwar Ahmed</Owners>
         <Authors>Anwar Ahmed</Authors>
         <Description>Library containing simple interfaces and abstract implementations for data access using EntityFrameworkCore, based on DoubleA.DataAccess.Contract and DoubleA.EntityModel</Description>
-        <ReleaseVersion>1.0.1.0</ReleaseVersion>
-        <PackageVersion>1.0.1.0</PackageVersion>
+        <ReleaseVersion>1.0.2.0</ReleaseVersion>
+        <PackageVersion>1.0.2.0</PackageVersion>
         <PackageLicense>MIT</PackageLicense>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
         <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
         <PackageProjectUrl>https://github.com/anwarahmed/data-access</PackageProjectUrl>
         <RepositoryUrl>https://github.com/anwarahmed/data-access</RepositoryUrl>
         <PackageTags>DoubleA, Data Access</PackageTags>
+        <PackOnBuild>true</PackOnBuild>
     </PropertyGroup>
     <ItemGroup>
         <PackageReference Include="DoubleA.DataAccess.Contract" Version="1.0.1" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.9" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.3" />
+        <PackageReference Include="DoubleA.LinqExtensions" Version="1.0.0" />
     </ItemGroup>
     <ItemGroup>
         <Folder Include="DataContexts\" />
         <Folder Include="Repositories\" />
-        <Folder Include="Extensions\" />
         <Folder Include="UnitOfWork\" />
     </ItemGroup>
 </Project>
