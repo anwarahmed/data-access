@@ -20,9 +20,9 @@ namespace DoubleA.DataAccess.Repositories
 
         protected IDataContext Context { get; }
 
-        protected IQueryable<TEntity> TrackedEntities => Context.Tracked<TEntity>();
+        protected DbSet<TEntity> TrackedEntities => Context.Set<TEntity>();
 
-        protected IQueryable<TEntity> UntrackedEntities => Context.Untracked<TEntity>();
+        protected IQueryable<TEntity> UntrackedEntities => Context.Query<TEntity>();
 
         public virtual async Task<TEntity> GetAsync(Guid id)
         {

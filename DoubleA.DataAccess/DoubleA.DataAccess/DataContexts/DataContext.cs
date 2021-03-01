@@ -25,10 +25,7 @@ namespace DoubleA.DataAccess.DataContexts
         public bool HasChanges => ChangeTracker.HasChanges();
 
         /// <inheritdoc/>
-        public IQueryable<TEntity> Tracked<TEntity>() where TEntity : class => Set<TEntity>();
-
-        /// <inheritdoc/>
-        public IQueryable<TEntity> Untracked<TEntity>() where TEntity : class => Set<TEntity>().AsNoTracking();
+        public IQueryable<TEntity> Query<TEntity>() where TEntity : class => Set<TEntity>().AsNoTracking();
 
         /// <inheritdoc/>
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

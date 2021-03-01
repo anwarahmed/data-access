@@ -13,14 +13,14 @@ namespace DoubleA.DataAccess.DataContexts
         bool HasChanges { get; }
 
         /// <summary>
-        /// Get a query of tracked entities that can be used to make changes to the underlying data collection
+        /// Get the DbSet of tracked entities that can be used to make changes to the underlying data collection
         /// </summary>
-        IQueryable<TEntity> Tracked<TEntity>() where TEntity : class;
+        DbSet<TEntity> Set<TEntity>() where TEntity : class;
 
         /// <summary>
         /// Get a query for a given entity for viewing purposes only
         /// </summary>
-        IQueryable<TEntity> Untracked<TEntity>() where TEntity : class;
+        IQueryable<TEntity> Query<TEntity>() where TEntity : class;
 
         /// <summary>
         /// Save changes made to all modified entities in the current data context
