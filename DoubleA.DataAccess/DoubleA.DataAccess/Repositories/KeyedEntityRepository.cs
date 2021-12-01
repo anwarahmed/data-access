@@ -24,7 +24,7 @@ namespace DoubleA.DataAccess.Repositories
 
         protected IQueryable<TEntity> UntrackedEntities => Context.Query<TEntity>();
 
-        public virtual async Task<TEntity> GetAsync(Guid id)
+        public virtual async Task<TEntity?> GetAsync(Guid id)
         {
             return await UntrackedEntities.FirstOrDefaultAsync(e => e.Id == id).ConfigureAwait(false);
         }
