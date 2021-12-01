@@ -35,7 +35,7 @@ namespace DoubleA.DataAccess.UnitOfWork
                 UnResolvedRepositories.Remove(repository);
             }
 
-            return repository as TRepository;
+            return (TRepository)repository;
         }
 
         public virtual async Task SaveChangesAsync(CancellationToken cancellationToken = default)
