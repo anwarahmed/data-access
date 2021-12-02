@@ -40,6 +40,8 @@ namespace DoubleA.DataAccess.UnitOfWork
 
         public virtual async Task SaveChangesAsync(CancellationToken cancellationToken = default)
         {
+            cancellationToken.ThrowIfCancellationRequested();
+
             var transactionOptions = new TransactionOptions { IsolationLevel = IsolationLevel.ReadCommitted };
             using var scope = new TransactionScope(TransactionScopeOption.Required, transactionOptions, TransactionScopeAsyncFlowOption.Enabled);
             if (DataContext.HasChanges)
