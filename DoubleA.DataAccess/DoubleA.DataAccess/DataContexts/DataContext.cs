@@ -59,8 +59,9 @@ namespace DoubleA.DataAccess.DataContexts
         /// <param name="entry"></param>
         protected virtual void OnAddingTrackedEntityBeforeSaving(EntityEntry<ITrackedEntity> entry)
         {
-            entry.Property(entity => entity.CreatedOn).CurrentValue = DateTime.UtcNow;
-            entry.Property(entity => entity.UpdatedOn).CurrentValue = DateTime.UtcNow;
+            var creationTime = DateTime.UtcNow;
+            entry.Property(entity => entity.CreatedOn).CurrentValue = creationTime;
+            entry.Property(entity => entity.UpdatedOn).CurrentValue = creationTime;
         }
 
         /// <summary>
