@@ -44,7 +44,7 @@ namespace DoubleA.DataAccess.Repositories
             return await UntrackedEntities.Filter(filters).ToDictionaryAsync(e => e.Id).ConfigureAwait(false);
         }
 
-        public abstract Task CreateAsync(TEntity newEntity);
+        public abstract Task<Guid> CreateAsync(TEntity newEntity);
 
         public abstract Task UpdateAsync(TEntity updatedEntity);
 

@@ -8,8 +8,8 @@
 		<Owners>Anwar Ahmed</Owners>
 		<Authors>Anwar Ahmed</Authors>
 		<Description>Library containing simple interfaces and abstract implementations for data access using EntityFrameworkCore, based on DoubleA.DataAccess.Contract and DoubleA.EntityModel</Description>
-		<ReleaseVersion>1.0.4.0</ReleaseVersion>
-		<PackageVersion>1.0.4.0</PackageVersion>
+		<ReleaseVersion>1.0.4.1</ReleaseVersion>
+		<PackageVersion>1.0.4.1</PackageVersion>
 		<PackageLicense>MIT</PackageLicense>
 		<PackageLicenseExpression>MIT</PackageLicenseExpression>
 		<PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
@@ -25,8 +25,8 @@
 	  <LangVersion>latest</LangVersion>
 	</PropertyGroup>
 	<ItemGroup>
-		<PackageReference Include="DoubleA.DataAccess.Contract" Version="1.0.2.1" />
-		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.12" />
+		<PackageReference Include="DoubleA.DataAccess.Contract" Version="1.0.2.2" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.13" />
 		<PackageReference Include="DoubleA.LinqExtensions" Version="1.0.0" />
 	</ItemGroup>
 	<ItemGroup>
